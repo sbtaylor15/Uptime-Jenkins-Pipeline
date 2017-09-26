@@ -17,7 +17,8 @@ node {
       echo "**********************************************************************************"    
       echo "* Deploying $app to Integration"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/dhdeploy.py --app \\\"$app\\\" --env \\\"Uptime Integration\\\""
+						def command = '/usr/local/bin/dhdeploy.py --app \\\\\\"' + $app + '\\\\\\" --env \\\\\\"Uptime Integration\\\\\\"'
+      sh command
       
       echo "**********************************************************************************"
       echo "* Running Testcases for $app in Integration"
