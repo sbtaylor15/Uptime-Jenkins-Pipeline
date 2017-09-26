@@ -17,40 +17,40 @@ node {
       echo "**********************************************************************************"    
       echo "* Deploying $app to Integration"
       echo "**********************************************************************************"
-      sh "mkdir -p output"
+      sh "dhdeploy.py --app \"$app\" --env \"Uptime Integration\""
       
       echo "**********************************************************************************"
       echo "* Running Testcases for $app in Integration"
       echo "**********************************************************************************"
-      sh "mkdir -p output"
+      sh "runtestcases.py --app \"$app\" --stage Integration"
 				}		
     
-    stage ('QA') {
+    stage ('Testing') {
       echo "**********************************************************************************"    
-      echo "* Moving $app from Integration to QA"
+      echo "* Moving $app from Integration to Testing"
       echo "**********************************************************************************"
-      sh "mkdir -p output"						    
+      sh "dhmove.py --app \"$app\" --from Development --to Testing" 				    
         
       echo "**********************************************************************************"        
-      echo "* Deploying $app to QA"
+      echo "* Deploying $app to Testing"
       echo "**********************************************************************************"
-      sh "mkdir -p output"
+      sh "dhdeploy.py --app \"$app\" --env \"Uptime Testing\""	
 
       echo "**********************************************************************************"    
-      echo "* Running Testcases for $app in QA"
+      echo "* Running Testcases for $app in Testing"
       echo "**********************************************************************************"    
-      sh "mkdir -p output"
+      sh "runtestcases.py --app \"$app\" --stage Testing"
     }
 				
     stage ('Production') {
       echo "**********************************************************************************"    
-      echo "* Moving $app from QA to Prod"
+      echo "* Moving $app from Testing to Production"
       echo "**********************************************************************************"    
-      sh "mkdir -p output"
+      sh "dhmove.py --app \"$app\" --from Testing --to Production" 	
 
       echo "**********************************************************************************"        
-      echo "* Deploying $app to Prod"
+      echo "* Deploying $app to Production"
       echo "**********************************************************************************"
-      sh "mkdir -p output"
+      sh "dhdeploy.py --app \"$app\" --stage \"Uptime Production\""				
     }
 }
