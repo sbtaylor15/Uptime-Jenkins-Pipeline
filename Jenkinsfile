@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
-import org.yaml.snakeyaml.Yaml
+def app=""
+def env=""
 
 node {
     
@@ -9,7 +10,10 @@ node {
     }
 				
     stage "Integration" {
-				  
+				  def lines=readFile('Deployfile').trim().split("\n");
+						app=lines[1].split(':')[1].trim()
+						env=lines[2].split(':')[1].trim()						
+						
       echo "**********************************************************************************"    
       echo "* Deploying $app to Integration"
       echo "**********************************************************************************"
