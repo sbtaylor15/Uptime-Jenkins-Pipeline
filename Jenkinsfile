@@ -17,40 +17,40 @@ node {
       echo "**********************************************************************************"    
       echo "* Deploying $app to Integration"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/dhdeploy.py --app \"$app\" --env \"Uptime Integration\""
+      sh "/usr/local/bin/dhdeploy.py --app \\"$app\\" --env \\"Uptime Integration\\""
       
       echo "**********************************************************************************"
       echo "* Running Testcases for $app in Integration"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/runtestcases.py --app \"$app\" --stage Integration"
+      sh "/usr/local/bin/runtestcases.py --app \\"$app\\" --stage Integration"
 				}		
     
     stage ('Testing') {
       echo "**********************************************************************************"    
       echo "* Moving $app from Integration to Testing"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/dhmove.py --app \"$app\" --from Development --to Testing" 				    
+      sh "/usr/local/bin/dhmove.py --app \\"$app\\" --from Development --to Testing" 				    
         
       echo "**********************************************************************************"        
       echo "* Deploying $app to Testing"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/dhdeploy.py --app \"$app\" --env \"Uptime Testing\""	
+      sh "/usr/local/bin/dhdeploy.py --app \\"$app\\" --env \\"Uptime Testing\\""	
 
       echo "**********************************************************************************"    
       echo "* Running Testcases for $app in Testing"
       echo "**********************************************************************************"    
-      sh "/usr/local/bin/runtestcases.py --app \"$app\" --stage Testing"
+      sh "/usr/local/bin/runtestcases.py --app \\"$app\\" --stage Testing"
     }
 				
     stage ('Production') {
       echo "**********************************************************************************"    
       echo "* Moving $app from Testing to Production"
       echo "**********************************************************************************"    
-      sh "/usr/local/bin/dhmove.py --app \"$app\" --from Testing --to Production" 	
+      sh "/usr/local/bin/dhmove.py --app \\"$app\\" --from Testing --to Production" 	
 
       echo "**********************************************************************************"        
       echo "* Deploying $app to Production"
       echo "**********************************************************************************"
-      sh "/usr/local/bin/dhdeploy.py --app \"$app\" --stage \"Uptime Production\""				
+      sh "/usr/local/bin/dhdeploy.py --app \\"$app\\" --stage \\"Uptime Production\\""				
     }
 }
