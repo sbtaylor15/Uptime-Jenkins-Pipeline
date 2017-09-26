@@ -1,2 +1,3 @@
-# DeployHub Deployment File
-Deploy "Uptime War for Tomcat;2" to "Uptime Integration"
+deploy:
+   application: "Uptime War for Tomcat;2"
+   environment: "Uptime Integration"
