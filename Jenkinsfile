@@ -9,7 +9,7 @@ node {
         git url: 'https://github.com/OpenMake-Software/Uptime-Application.git'
     }
 				
-    stage "Integration" {
+    stage ('Integration') {
 				  def lines=readFile('Deployfile').trim().split("\n");
 						app=lines[1].split(':')[1].trim()
 						env=lines[2].split(':')[1].trim()						
@@ -25,7 +25,7 @@ node {
       sh "mkdir -p output"
 				}		
     
-    stage "QA" {
+    stage ('QA') {
       echo "**********************************************************************************"    
       echo "* Moving $app from Integration to QA"
       echo "**********************************************************************************"
@@ -42,7 +42,7 @@ node {
       sh "mkdir -p output"
     }
 				
-    stage "Production" {
+    stage ('Production') {
       echo "**********************************************************************************"    
       echo "* Moving $app from QA to Prod"
       echo "**********************************************************************************"    
