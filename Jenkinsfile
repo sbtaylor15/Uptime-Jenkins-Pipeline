@@ -1,12 +1,15 @@
 #!/usr/bin/env groovy
 
+import org.yaml.snakeyaml.Yaml
+
 node {
     
     stage('Clone sources') {
         git url: 'https://github.com/OpenMake-Software/Uptime-Application.git'
     }
 				
-    stage "Integration"
+    stage "Integration" {
+				  
       echo "**********************************************************************************"    
       echo "* Deploying $app to Integration"
       echo "**********************************************************************************"
@@ -16,8 +19,9 @@ node {
       echo "* Running Testcases for $app in Integration"
       echo "**********************************************************************************"
       sh "mkdir -p output"
+				}		
     
-    stage "QA"
+    stage "QA" {
       echo "**********************************************************************************"    
       echo "* Moving $app from Integration to QA"
       echo "**********************************************************************************"
@@ -32,8 +36,9 @@ node {
       echo "* Running Testcases for $app in QA"
       echo "**********************************************************************************"    
       sh "mkdir -p output"
-    
-    stage "Production"
+    }
+				
+    stage "Production" {
       echo "**********************************************************************************"    
       echo "* Moving $app from QA to Prod"
       echo "**********************************************************************************"    
@@ -43,5 +48,5 @@ node {
       echo "* Deploying $app to Prod"
       echo "**********************************************************************************"
       sh "mkdir -p output"
-
+    }
 }
