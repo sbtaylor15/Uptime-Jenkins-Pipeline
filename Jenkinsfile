@@ -31,7 +31,7 @@ node {
       echo "**********************************************************************************"
       echo "* Running Testcases for $app in Integration"
       echo "**********************************************************************************"
-      cmd = /runtestcases.py --app ${app} --stage Integration/
+      cmd = /runtestcases.py --app ${app} --env Integration/
       sh cmd
     }  
     
@@ -51,7 +51,7 @@ node {
       echo "**********************************************************************************"    
       echo "* Running Testcases for $app in Testing"
       echo "**********************************************************************************"    
-      cmd = /runtestcases.py --app ${app} --stage Testing/
+      cmd = /runtestcases.py --app ${app} --env Testing/
       sh cmd
     }
     
