@@ -10,3 +10,6 @@ A development team lead will approve the appropriate application version to proc
 The Application Verison Wiki page needs to be updated with an "Approve" message to perform the approval.  Once approved a Jenkins Pipeline will be initiated to carry that application version through the stages of the pipeline.  These stages typically include Integration Deployment and Testing, QA Deployment and Test, and finally Production Deployment.
 
 The Pipeline will only proceed to the next stage if sucessfull.
+
+## Continuous Deploy Pipeline
+[Pipeline Activity](http://rocket:28080/blue/organizations/jenkins/Uptime%20Continuous%20Deployment%20Pipeline/activity)
