@@ -59,7 +59,7 @@ node {
       echo "**********************************************************************************"    
       echo "* Moving $app from Testing to Production"
       echo "**********************************************************************************"    
-      cmd = /dhmove.py --app ${app} --from_domain 'GLOBAL.My Pipeline.Integration' --task 'Move to Production'/
+      cmd = /dhmove.py --app ${app} --from_domain 'GLOBAL.My Pipeline.Testing' --task 'Move to Production'/
       sh cmd     
 
       echo "**********************************************************************************"        
