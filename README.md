@@ -1,8 +1,8 @@
 # Summary
-The Uptime-Application cosolidates multiple components that are built by Jenkins into a single application package.  Each of the components have thier own Jenkins CI process for creating, publishing artifacts and deploying to Development servers using DeployHub.
+The Uptime Continuous Deployment cosolidates multiple components that are built by Jenkins into a single application package.  Each of the components have thier own Jenkins CI process for creating, publishing artifacts and deploying to Development servers using DeployHub.
 
 ## History
-The [Wiki](https://github.com/OpenMake-Software/Uptime-Application/wiki) will contain a full history (builds, development deployments and the Continous Deployent Pipeline to Production).
+The [Wiki](https://github.com/OpenMake-Software/Uptime-Continuous-Deployment-Pipeline/wiki) will contain a full history (builds, development deployments and the Continous Deployent Pipeline to Production).
 
 ## Approving Development Change for the Continous Deployent Pipeline
 A development team lead will approve the appropriate application version to proceed down the Continuous Deployment Pipeline when they are statisfied with the integration and testing that they have performed. 
