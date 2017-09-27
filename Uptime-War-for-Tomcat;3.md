@@ -3,12 +3,15 @@
 + [Approvals](#approvals)
 + [Components](#components)
 ## Summary
-Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeline.Production stage of the pipeline
+Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeline.Integration stage of the pipeline
 ## Approvals
 ### Approve this version for remaining steps of the Continous Deployment Pipeline
 - [X] Approve
 - [ ] Reject
 ### History
+* *09/27/2017 15:05* --Deployment succeeded to Uptime Integration #1019
+* *09/27/2017 15:05* -- Moved to Domain "Integration": 
+ by admin
 * *09/27/2017 15:02* --Deployment succeeded to Uptime Production #1018
 * *09/27/2017 15:02* -- Moved to Domain "Production": 
  by admin
@@ -28,9 +31,9 @@ Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeli
 * *09/27/2017 14:58* -- Moved to Domain "Integration": 
  by admin
 * *09/27/2017 14:57* --Deployment succeeded to Uptime Integration #1012
+* *09/27/2017 14:57* --Deployment succeeded to Uptime Testing #1011
 * *09/27/2017 14:57* -- Moved to Domain "Integration": 
  by admin
-* *09/27/2017 14:57* --Deployment succeeded to Uptime Testing #1011
 * *09/27/2017 14:57* -- Moved to Domain "Testing": 
  by admin
 * *09/27/2017 14:56* --Deployment succeeded to Uptime Integration #1010
@@ -40,9 +43,9 @@ Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeli
 * *09/27/2017 14:36* -- Moved to Domain "Integration": 
  by admin
 * *09/27/2017 14:35* --Deployment succeeded to Uptime Integration #1008
+* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Integration": 
  by admin
-* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Testing": 
  by admin
 * *09/27/2017 14:34* --Deployment succeeded to Uptime Testing #1006
@@ -70,9 +73,9 @@ Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeli
 * *09/27/2017 14:30* -- Moved to Domain "Integration": 
  by admin
 * *09/27/2017 14:29* --Deployment succeeded to Uptime Integration #998
-* *09/27/2017 14:29* --Deployment succeeded to Uptime Testing #997
 * *09/27/2017 14:29* -- Moved to Domain "Integration": 
  by admin
+* *09/27/2017 14:29* --Deployment succeeded to Uptime Testing #997
 * *09/27/2017 14:29* -- Moved to Domain "Testing": 
  by admin
 * *09/27/2017 14:28* --Deployment succeeded to Uptime Integration #996
