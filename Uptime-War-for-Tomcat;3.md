@@ -9,10 +9,13 @@ Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeli
 - [X] Approve
 - [ ] Reject
 ### History
+* *09/27/2017 14:36* --Deployment succeeded to Uptime Integration #1009
+* *09/27/2017 14:36* -- Moved to Domain "Integration": 
+ by admin
 * *09/27/2017 14:35* --Deployment succeeded to Uptime Integration #1008
-* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Integration": 
  by admin
+* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Testing": 
  by admin
 * *09/27/2017 14:34* --Deployment succeeded to Uptime Testing #1006
