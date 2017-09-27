@@ -8,7 +8,7 @@ def cmd=""
 node {
     
     stage('Clone sources') {
-        git url: 'https://github.com/OpenMake-Software/Uptime-Application.git'
+        git url: 'https://github.com/OpenMake-Software/Uptime-Continuous-Deployment-Pipeline.git'
     }
     
     stage ('Integration') {
