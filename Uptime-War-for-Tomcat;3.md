@@ -3,12 +3,15 @@
 + [Approvals](#approvals)
 + [Components](#components)
 ## Summary
-Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeline.Testing stage of the pipeline
+Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeline.Production stage of the pipeline
 ## Approvals
 ### Approve this version for remaining steps of the Continous Deployment Pipeline
 - [X] Approve
 - [ ] Reject
 ### History
+* *09/27/2017 14:59* --Deployment succeeded to Uptime Production #1016
+* *09/27/2017 14:59* -- Moved to Domain "Production": 
+ by admin
 * *09/27/2017 14:59* --Deployment succeeded to Uptime Testing #1015
 * *09/27/2017 14:59* -- Moved to Domain "Testing": 
  by admin
@@ -31,9 +34,9 @@ Application Version Uptime War for Tomcat;3 is currently in the GLOBAL.My Pipeli
 * *09/27/2017 14:36* -- Moved to Domain "Integration": 
  by admin
 * *09/27/2017 14:35* --Deployment succeeded to Uptime Integration #1008
-* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Integration": 
  by admin
+* *09/27/2017 14:35* --Deployment succeeded to Uptime Testing #1007
 * *09/27/2017 14:35* -- Moved to Domain "Testing": 
  by admin
 * *09/27/2017 14:34* --Deployment succeeded to Uptime Testing #1006
