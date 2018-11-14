@@ -5,15 +5,13 @@
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
-def url=""
+def url="https://console.deployhub.com"
 def user="admin"
 def pw="admin"
 
 def dh = new deployhub();
 
 node {
-    
-    url = dh.getURL(env);
 	
     stage('Clone sources') {
         git url: 'https://github.com/DeployHubProject/Uptime-Jenkins-Pipeline.git'
