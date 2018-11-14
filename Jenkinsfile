@@ -26,7 +26,7 @@ node {
        {
         echo "Deploying $app to Testing"
         
-        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Testing");
+        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Testing.Test");
         if (data[0])
         {
          def deploymentid = data[1]['deploymentid'];
@@ -55,7 +55,7 @@ node {
        {
         echo "Deploying $app to Production"
         
-        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Production");
+        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Production.Prod");
         if (data[0])
         {
          def deploymentid = data[1]['deploymentid'];
