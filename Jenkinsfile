@@ -6,8 +6,8 @@ def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url="https://console.deployhub.com"
-def user="admin"
-def pw="admin"
+def user="jmorada"
+def pw="americanedu"
 
 def dh = new deployhub();
 
