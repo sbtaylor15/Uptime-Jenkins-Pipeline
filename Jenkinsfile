@@ -2,7 +2,7 @@
 
 @Library('deployhub') _
 
-def app="GLOBAL.American University.CSC589.chili.Development.Uptime App"
+def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url=""
