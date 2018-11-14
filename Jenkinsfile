@@ -45,8 +45,7 @@ node {
        else
        {
         error(data[1]);
-       } 
-      }
+       }
     }  
 
     stage ('Production') {
@@ -76,7 +75,5 @@ node {
        {
         error(data[1]);
        } 
-      }
     }  
-
 }
