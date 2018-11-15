@@ -7,7 +7,7 @@ def environment=""
 def cmd=""
 def url="https://console.deployhub.com"
 def user="jmorada"
-def pw="americanedu"
+def pw="american.edu"
 
 def dh = new deployhub();
 
