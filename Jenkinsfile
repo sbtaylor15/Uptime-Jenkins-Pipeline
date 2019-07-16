@@ -23,8 +23,7 @@ node {
 	    
       def attrs = [lastbuildnumber: "20"];
       data = dh.updateComponentAttrs(url,user,pw, "Uptime Dashboard;1",attrs);
-      echo "Update Done";
-      echo data;
+      echo "Update Done " + data.toString();
      
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
