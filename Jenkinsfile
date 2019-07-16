@@ -19,7 +19,12 @@ node {
     
     stage ('Testing') {
    
-      echo "Moving $app from Development to Testing"
+      echo "Moving $app from Development to Testing";
+	    
+      def attrs = [lastbuildnumber: "20"];
+      data = dh.updateComponentAttrs(url,user,pw, "Uptime Dashboard;1",attrs);
+      echo "Update Done";
+      echo data;
      
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
