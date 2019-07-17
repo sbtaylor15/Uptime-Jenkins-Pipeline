@@ -20,9 +20,13 @@ node {
     stage ('Testing') {
    
       echo "Moving $app from Development to Testing";
+      def compname = "Uptime Dashboard";
+      def compvariant = "1";
+      def compversion = "cda3333";
 	    
-      def attrs = [buildnumber: "20"];
-      data = dh.updateComponentAttrs(url,user,pw, "Uptime Dashboard;1",attrs);
+      data = dh.new_component_version(url,user,pw, compname, compvariant, compversion);
+      def attrs = [buildnumber: "21"];
+      data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
       echo "Update Done " + data.toString();
      
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
