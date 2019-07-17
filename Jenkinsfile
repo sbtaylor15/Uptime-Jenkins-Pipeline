@@ -24,7 +24,7 @@ node {
       def compvariant = "1";
       def compversion = "cda3333";
 	    
-      data = dh.new_component_version(url,user,pw, compname, compvariant, compversion);
+      data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
       def attrs = [buildnumber: "21"];
       data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
       echo "Update Done " + data.toString();
