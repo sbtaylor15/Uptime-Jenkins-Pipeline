@@ -21,7 +21,7 @@ node {
    
       echo "Moving $app from Development to Testing";
 	    
-      def attrs = [lastbuildnumber: "20"];
+      def attrs = [buildnumber: "20"];
       data = dh.updateComponentAttrs(url,user,pw, "Uptime Dashboard;1",attrs);
       echo "Update Done " + data.toString();
      
