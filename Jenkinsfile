@@ -5,7 +5,7 @@
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
-def url="https://console.deployhub.com"
+def url="http://192.168.3.111"
 def user="jmorada"
 def pw="american.edu"
 
