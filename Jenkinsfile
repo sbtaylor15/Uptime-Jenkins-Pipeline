@@ -20,7 +20,7 @@ node {
     stage ('Testing') {
    
       echo "Moving $app from Development to Testing";
-      def compname = "Uptime Dashboard XXX";
+      def compname = "GLOBAL.American University.CSC589.chili.Uptime Dashboard XXX";
       def compvariant = "v1_5_0";
       def compversion = "";
 	    
