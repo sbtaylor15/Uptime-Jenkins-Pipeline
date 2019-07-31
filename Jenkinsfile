@@ -5,7 +5,7 @@
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
-def url="http://192.168.3.116"
+def url="http://192.168.3.116:8080"
 def user="jmorada"
 def pw="american.edu"
 
