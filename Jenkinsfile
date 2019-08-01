@@ -25,10 +25,8 @@ node {
       def compversion = "v1.5.0-" + env.BUILD_ID;
 	    
       data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
-      echo data.toString();
       def attrs = [buildnumber: env.BUILD_ID];
       data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
-      echo "Update Done " + data.toString();
      
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
