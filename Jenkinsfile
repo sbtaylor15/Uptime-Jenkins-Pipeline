@@ -5,9 +5,9 @@
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
-def url="http://192.168.3.116:8080"
-def user="jmorada"
-def pw="american.edu"
+def url="http://192.168.3.96:7171"
+def user="admin"
+def pw="admin"
 
 def dh = new deployhub();
 
@@ -19,16 +19,25 @@ node {
     
     stage ('Testing') {
    
-      echo "Moving $app from Development to Testing";
-      def compname = "GLOBAL.American University.CSC589.chili.Uptime Dashboard XXX";
-      def compvariant = "July Release";
-      def compversion = "v1.5.0-" + env.BUILD_ID;
-	    
-      data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
-      echo data.toString();
-      def attrs = [buildnumber: env.BUILD_ID];
-      data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
-      echo data.toString();
+def comp="GLOBAL.Test_Project.Test.testapp"
+dev version = "0.1.0-103"
+def environment="ustr-k8s"
+// def cmd=""
+
+echo "${url}";
+echo "${version}";
+
+// create component version
+// def newComponentVersion(String url, String userid, String pw, String compname, String compvariant, String compversion)
+data = dh.newComponentVersion(url, user, pw, comp, "", version);
+echo "Creation Done " + data.toString();
+
+// // update attrs
+def attrs = [Chart: "harbor-lib/"+imagename, buildnumber: env.BUILD_ID, chartversion: version];
+echo "${attrs}";
+// // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
+data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
+echo "Update Done " + data.toString();
 	    
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
