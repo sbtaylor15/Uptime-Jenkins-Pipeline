@@ -21,8 +21,6 @@ node {
    
 def comp="GLOBAL.Test_Project.Test.testapp"
 dev version = "0.1.0-103"
-def environment="ustr-k8s"
-// def cmd=""
 
 echo "${url}";
 echo "${version}";
