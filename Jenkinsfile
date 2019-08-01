@@ -21,14 +21,12 @@ node {
    
       echo "Moving $app from Development to Testing";
       def compname = "GLOBAL.American University.CSC589.chili.Uptime Dashboard XXX";
-      def compvariant = "July Release";
-      def compversion = "v1.5.0-" + env.BUILD_ID;
+      def compvariant = "";
+      def compversion = "v1.5.0";
 	    
       data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
-	    echo "N=" + data.toString();
       def attrs = [buildnumber: env.BUILD_ID];
       data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
-       echo "UPDATE=" + data.toString();
 	    
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
