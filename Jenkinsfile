@@ -20,7 +20,7 @@ node {
     stage ('Testing') {
    
 def comp="GLOBAL.Test_Project.Test.testapp"
-dev version = "0.1.0-103"
+def version = "0.1.0-103"
 
 echo "${url}";
 echo "${version}";
