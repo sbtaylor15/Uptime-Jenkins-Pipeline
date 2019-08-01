@@ -21,8 +21,8 @@ node {
    
       echo "Moving $app from Development to Testing";
       def compname = "GLOBAL.American University.CSC589.chili.Uptime Dashboard XXX";
-      def compvariant = "";
-      def compversion = "v1.5.1";
+      def compvariant = "July Release";
+      def compversion = "v1.5.0-" + env.BUILD_ID;
 	    
       data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
       echo data.toString();
