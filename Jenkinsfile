@@ -7,7 +7,7 @@ def environment=""
 def cmd=""
 def url="http://192.168.3.96:7171"
 def user="dhuser"
-def pw="1234"
+def pw="dhuser"
 
 def dh = new deployhub();
 
