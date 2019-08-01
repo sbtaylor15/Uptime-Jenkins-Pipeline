@@ -25,6 +25,7 @@ node {
       def compversion = "v1.5.0-" + env.BUILD_ID;
 	    
       data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
+	    echo "N=" + data.toString();
       def attrs = [buildnumber: env.BUILD_ID];
       data = dh.updateComponentAttrs(url,user,pw, compname, compvariant, compversion ,attrs);
        echo "UPDATE=" + data.toString();
