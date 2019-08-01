@@ -21,8 +21,8 @@ node {
    
       echo "Moving $app from Development to Testing";
       def compname = "GLOBAL.American University.CSC589.chili.Uptime Dashboard XXX";
-      def compvariant = "v1_5_0";
-      def compversion = "";
+      def compvariant = "";
+      def compversion = "v1.5.0-15";
 	    
       data = dh.newComponentVersion(url,user,pw, compname, compvariant, compversion);
       def attrs = [buildnumber: "21"];
