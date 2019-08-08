@@ -42,7 +42,7 @@ def attrs = [
 	     DockerSha: "sha for the docker image",
 	     DockerRepo: "url for the docker registry",
 	     GitCommit: env.GIT_COMMIT,
-	     GitRepo: env.GIT_URL
+	     GitRepo: env.GIT_URL,
 	     GitTag: env.GIT_BRANCH,
 	     GitUrl: env.GIT_URL,
 	     buildnumber: env.BUILD_ID, 
