@@ -34,7 +34,7 @@ echo "Creation Done " + data.toString();
 // // update attrs
 def attrs = [
 	     BuildId: env.BUILD_ID,
-	     BuildUrl: - env.BUILD_URL,
+	     BuildUrl: env.BUILD_URL,
              Chart: "harbor-lib/"+imagename, 
 	     chartversion: version,
 	     operator: "Kubernetes operator",
