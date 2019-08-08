@@ -41,21 +41,21 @@ def attrs = [
 	     DockerBuildDate: "timestamp",
 	     DockerSha: "sha for the docker image",
 	     DockerRepo: "url for the docker registry",
-	     GitCommit: env.GIT_COMMIT,
-	     GitRepo: env.GIT_URL,
-	     GitTag: env.GIT_BRANCH,
-	     GitUrl: env.GIT_URL,
+	     GitCommit: "git commit",
+	     GitRepo: "git repo",
+	     GitTag: "git tag",
+	     GitUrl: "git url",
 	     buildnumber: env.BUILD_ID, 
-	     buildjob: env.JOB_NAME,
+	     buildjob: "GLOBAL.Jenkins-3",
 	     ComponentType: "Application File",
 	     ChangeRequestDS: "GLOBAL.JiraUnisys",
 	     Category: "General",
 	     AlwaysDeploy: "Y",
 	     DeploySequentially: "Y",
 	     BaseDirectory: "tmp",
-	     PreAction: "GLOBAL.CatchRC",
-	     PostAction: "GLOBAL.GetLog",
-	     CustomAction: "GLOBAL.RunJenkinsJob"
+	     PreAction: "GLOBAL.Run_SQL_Script_Postgres",
+	     PostAction: "GLOBAL.Run_SQL_Script_Postgres",
+	     CustomAction: "GLOBAL.Run_SQL_Script_Postgres"
 	    ];
 echo "${attrs}";
 // // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
