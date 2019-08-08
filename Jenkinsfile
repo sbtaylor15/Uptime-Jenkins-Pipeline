@@ -55,7 +55,8 @@ def attrs = [
 	     BaseDirectory: "tmp",
 	     PreAction: "GLOBAL.Run_SQL_Script_Postgres",
 	     PostAction: "GLOBAL.Run_SQL_Script_Postgres",
-	     CustomAction: "GLOBAL.Run_SQL_Script_Postgres"
+	     CustomAction: "GLOBAL.Run_SQL_Script_Postgres",
+	     Summary: "Pipeline Comp"
 	    ];
 echo "${attrs}";
 // // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
