@@ -19,7 +19,7 @@ node {
     
     stage ('Testing') {
    
-def comp="GLOBAL.Test_Project.Test.testapp"
+def comp="GLOBAL.Test_Project.Test.unisys-ad-search"
 def version = "0.1.0-103"
 def imagename = "app-ui-helm"
 
