@@ -19,7 +19,7 @@ node {
     
     stage ('Testing') {
    
-def comp="GLOBAL.Test_Project.Test.unisys-ad-search"
+def comp="GLOBAL.Test_Project.Test.testapp"
 def version = "0.1.0-103"
 def imagename = "app-ui-helm"
 
@@ -32,7 +32,31 @@ data = dh.newComponentVersion(url, user, pw, comp, "", version);
 echo "Creation Done " + data.toString();
 
 // // update attrs
-def attrs = [Chart: "harbor-lib/"+imagename, buildnumber: env.BUILD_ID, chartversion: version];
+def attrs = [
+	     BuildId: env.BUILD_ID,
+	     BuildUrl: - env.BUILD_URL,
+             Chart: "harbor-lib/"+imagename, 
+	     chartversion: version,
+	     operator: "Kubernetes operator"
+	     DockerBuildDate: "timestamp"
+	     DockerSha: "sha for the docker image"
+	     DockerRepo: "url for the docker registry"
+	     GitCommit: env.GIT_COMMIT,
+	     GitRepo: env.GIT_URL
+	     GitTag: env.GIT_BRANCH,
+	     GitUrl: env.GIT_URL,
+	     buildnumber: env.BUILD_ID, 
+	     buildjob: env.JOB_NAME,
+	     ComponentType: "Application File",
+	     ChangeRequestDS: "GLOBAL.JiraUnisys",
+	     Category: "General",
+	     AlwaysDeploy: "Y",
+	     DeploySequentially: "Y",
+	     BaseDirectory: "tmp",
+	     PreAction: "GLOBAL.CatchRC",
+	     PostAction: "GLOBAL.GetLog",
+	     CustomAction: "GLOBAL.RunJenkinsJob"
+	    ];
 echo "${attrs}";
 // // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
 data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
