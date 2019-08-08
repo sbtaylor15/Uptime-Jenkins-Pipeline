@@ -37,10 +37,10 @@ def attrs = [
 	     BuildUrl: - env.BUILD_URL,
              Chart: "harbor-lib/"+imagename, 
 	     chartversion: version,
-	     operator: "Kubernetes operator"
-	     DockerBuildDate: "timestamp"
-	     DockerSha: "sha for the docker image"
-	     DockerRepo: "url for the docker registry"
+	     operator: "Kubernetes operator",
+	     DockerBuildDate: "timestamp",
+	     DockerSha: "sha for the docker image",
+	     DockerRepo: "url for the docker registry",
 	     GitCommit: env.GIT_COMMIT,
 	     GitRepo: env.GIT_URL
 	     GitTag: env.GIT_BRANCH,
