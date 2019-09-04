@@ -74,7 +74,7 @@ node {
    def xpos = 100;
    def ypos = 100;
 	  
-   assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+   dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
   }
  }
 	    
