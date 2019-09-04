@@ -20,6 +20,8 @@ node {
     stage ('Testing') {
    
 def comp="GLOBAL.Test_Project.Test.testapp"
+def application="GLOBAL.Test_Project.Test.My Test App"	 
+def appver = "5.0"	    
 def version = "0.1.0-103"
 def imagename = "app-ui-helm"
 
@@ -62,6 +64,8 @@ echo "${attrs}";
 // // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
 data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
 echo "Update Done " + data.toString();
+	    
+data = dh.newApplication(url, user, pw,application,"");
 	    
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
