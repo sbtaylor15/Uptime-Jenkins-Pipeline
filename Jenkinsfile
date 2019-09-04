@@ -74,7 +74,8 @@ node {
    def xpos = 100;
    def ypos = 100;
 	  
-   dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+   data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+   echo data.toString();
   }
  }
 	    
