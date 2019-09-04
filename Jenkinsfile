@@ -19,23 +19,22 @@ node {
     
     stage ('Testing') {
    
-def comp="GLOBAL.Test_Project.Test.testapp"
-def application="GLOBAL.Test_Project.Test.My Test App"	 
-def appver = "5.0"	    
-def version = "0.1.0-103"
-def imagename = "app-ui-helm"
-def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
+ def comp="GLOBAL.Test_Project.Test.testapp"
+ def application="GLOBAL.Test_Project.Test.My Test App"	 
+ def appver = "5.0"	    
+ def version = "0.1.0-103"
+ def imagename = "app-ui-helm"
+ def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
 
-echo "${url}";
-echo "${version}";
+ echo "${url}";
+ echo "${version}";
 
-// create component version
-// def newComponentVersion(String url, String userid, String pw, String compname, String compvariant, String compversion)
-data = dh.newComponentVersion(url, user, pw, comp, "", version);
-echo "Creation Done " + data.toString();
+ // create component version
+ compid = dh.newComponentVersion(url, user, pw, comp, "", version);
+ echo "Creation Done " + compid.toString();
 
-// // update attrs
-def attrs = [
+ // update attrs
+ def attrs = [
 	     BuildId: env.BUILD_ID,
 	     BuildUrl: env.BUILD_URL,
              Chart: "harbor-lib/"+imagename, 
@@ -61,65 +60,22 @@ def attrs = [
 	     CustomAction: "GLOBAL.Run_SQL_Script_Postgres",
 	     Summary: "Pipeline Comp"
 	    ];
-echo "${attrs}";
-// // def updateComponentAttrs(String url, String userid, String pw, String compname, String compvariant, String compversion, Map Attrs)
-data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
-echo "Update Done " + data.toString();
 	    
-data = dh.newApplication(url, user, pw,application,appver, envs);
-echo "Update APP " + data.toString();	    
+  echo "${attrs}";
+  data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
+  echo "Update Done " + data.toString();
 	    
-       data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
-       if (data[0])
-       {
-        echo "Deploying $app to Testing"
-        
-        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Testing.Test");
-        if (data[0])
-        {
-         def deploymentid = data[1]['deploymentid'];
-
-         echo "Deployment Logs for #$deploymentid"
-         data = dh.getLogs(url,user,pw, "$deploymentid");
-         echo data[1];         
-        }
-        else
-        {
-         error(data[1]);
-        } 
-       }
-       else
-       {
-        error(data[1]);
-       }
-    }  
-
-    stage ('Production') {
-    
-      echo "Moving $app from Development to Production"
-     
-       data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Testing","Move to Production");
-       if (data[0])
-       {
-        echo "Deploying $app to Production"
-        
-        data = dh.deployApplication(url,user,pw, app, "GLOBAL.American University.CSC589.chili.Production.Prod");
-        if (data[0])
-        {
-         def deploymentid = data[1]['deploymentid'];
-
-         echo "Deployment Logs for #$deploymentid"
-         data = dh.getLogs(url,user,pw, "$deploymentid");
-         echo data[1];         
-        }
-        else
-        {
-         error(data[1]);
-        } 
-       }
-       else
-       {
-        error(data[1]);
-       } 
-    }  
+  data = dh.newApplication(url, user, pw,application,appver, envs);
+  appid = data[0];
+	    
+  if (appid > 0 && compid > 0)
+  {
+   def parent_compid = 0;
+   def xpos = 100;
+   def ypos = 100;
+	  
+   assignComp2App(url, userid, pw, appid, compid, parent_compid, xpos, ypos);
+  }
+ }
+	    
 }
