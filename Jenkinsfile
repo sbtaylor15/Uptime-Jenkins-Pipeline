@@ -66,6 +66,7 @@ data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
 echo "Update Done " + data.toString();
 	    
 data = dh.newApplication(url, user, pw,application,"");
+echo "Update APP " + data.toString();	    
 	    
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
        if (data[0])
