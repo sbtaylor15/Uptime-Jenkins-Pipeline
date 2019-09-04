@@ -24,6 +24,7 @@ def application="GLOBAL.Test_Project.Test.My Test App"
 def appver = "5.0"	    
 def version = "0.1.0-103"
 def imagename = "app-ui-helm"
+def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
 
 echo "${url}";
 echo "${version}";
@@ -65,7 +66,7 @@ echo "${attrs}";
 data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
 echo "Update Done " + data.toString();
 	    
-data = dh.newApplication(url, user, pw,application,appver);
+data = dh.newApplication(url, user, pw,application,appver, envs);
 echo "Update APP " + data.toString();	    
 	    
        data = dh.moveApplication(url,user,pw, app ,"GLOBAL.American University.CSC589.chili.Development","Move to Testing");
