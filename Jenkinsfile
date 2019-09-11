@@ -26,7 +26,7 @@ node {
  def comp="GLOBAL.Test_Project.Test.testapp"
  def application="GLOBAL.Test_Project.Test.My Test App"	 
  def appver = "5.0"	    
- def version = "0.1.0-103"
+ def version = "0.1.0-106"
  def imagename = "app-ui-helm"
  def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
 
@@ -39,30 +39,18 @@ node {
 
  // update attrs
  def attrs = [
-	     BuildId: env.BUILD_ID,
-	     BuildUrl: env.BUILD_URL,
-             Chart: "harbor-lib/"+imagename, 
-	     chartversion: version,
-	     operator: "Kubernetes operator",
-	     DockerBuildDate: "timestamp",
-	     DockerSha: "sha for the docker image",
-	     DockerRepo: "url for the docker registry",
-	     GitCommit: "git commit",
-	     GitRepo: "git repo",
-	     GitTag: "git tag",
-	     GitUrl: "git url",
-	     buildnumber: env.BUILD_ID, 
+	     buildnumber: env.BUILD_ID,
 	     buildjob: "GLOBAL.test-project",
-	     ComponentType: "Wildfly_EP",
-	     ChangeRequestDS: "GLOBAL.JiraUnisys",
-	     Category: "General",
-	     AlwaysDeploy: "N",
-	     DeploySequentially: "N",
-	     BaseDirectory: "tmp",
-	     PreAction: "GLOBAL.Run_SQL_Script_Postgres",
-	     PostAction: "GLOBAL.Run_SQL_Script_Postgres",
-	     CustomAction: "GLOBAL.Run_SQL_Script_Postgres",
-	     Summary: "Pipeline Comp"
+	     ComponentType: "Helm Chart",
+	     Category: "Deploy",
+	     AlwaysDeploy: "Y",
+	     DeploySequentially: "Y",
+	     CustomAction: "GLOBAL.HelmUpgradeAction",
+	     'creds["helmrepo"]': "ec2user",
+	     Chart: "stable/heartbeat",
+	     ChartVersion: "1.0.0",
+	     ChartNamespace: "dev1",
+	     'image.tag': "1.0.0"
 	    ];
 	    
   echo "${attrs}";
