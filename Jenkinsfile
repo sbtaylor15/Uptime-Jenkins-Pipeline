@@ -2,20 +2,16 @@
 
 @Library('deployhub') _
 
-	
-def app="ChiliUptimeApp"
-def environment=""
-def cmd=""
-def url="http://192.168.3.118:8181"
+withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVariable: 'pw', usernameVariable: 'user')]) 
+{  	
+ def app="ChiliUptimeApp"
+ def environment=""
+ def cmd=""
+ def url="http://192.168.3.118:8181"
 
-def dh = new deployhub();
+ def dh = new deployhub();
 
-node {
-  withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVariable: 'pw', usernameVariable: 'user')]) 
-  {
-      echo "User=" + user
-      echo "PW=" + pw
-	  
+ node {
     stage('Clone sources') {
         git url: 'https://github.com/DeployHubProject/Uptime-Jenkins-Pipeline.git'
     }
