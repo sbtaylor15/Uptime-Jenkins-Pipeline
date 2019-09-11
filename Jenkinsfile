@@ -54,8 +54,9 @@ withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVari
       echo "Update Done " + data.toString();
 
       data = dh.newApplication(url, user, pw,application,appver, envs);
+      echo "New Application " + data.toString();
       appid = data[0];
-	    
+
       if (appid > 0 && compid > 0)
       {
        def parent_compid = 0;
