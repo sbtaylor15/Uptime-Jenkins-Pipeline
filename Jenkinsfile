@@ -2,12 +2,16 @@
 
 @Library('deployhub') _
 
+environment {
+    DEPLOYHUB_CREDS = credentials('deployhub-creds')
+}
+
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url="http://voltron:7171"
-def user="dhuser"
-def pw="dhuser"
+def user=$DEPLOYHUB_CREDS_USR
+def pw=$DEPLOYHUB_CREDS_PSW
 
 def dh = new deployhub();
 
