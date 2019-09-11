@@ -2,23 +2,24 @@
 
 @Library('deployhub') _
 
+	
+environment {
+    DEPLOYHUB_CREDS = credentials('deployhub-creds')
+}
 
 def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url="http://192.168.3.118:8181"
-
+def user=env.DEPLOYHUB_CREDS_USR
+def pw=env.DEPLOYHUB_CREDS_PSW
 
 def dh = new deployhub();
 
 node {
-	
-    environment {
-      DEPLOYHUB_CREDS = credentials('deployhub-creds')
-    }
+    echo(env.getEnvironment().collect({environmentVariable ->  "${environmentVariable.key} = ${environmentVariable.value}"}).join("\n"))
+    echo(System.getenv().collect({environmentVariable ->  "${environmentVariable.key} = ${environmentVariable.value}"}).join("\n"))
 
-    def user=env.DEPLOYHUB_CREDS_USR
-    def pw=env.DEPLOYHUB_CREDS_PSW
 	
     stage('Clone sources') {
         git url: 'https://github.com/DeployHubProject/Uptime-Jenkins-Pipeline.git'
