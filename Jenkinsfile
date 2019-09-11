@@ -52,8 +52,18 @@ withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVari
       echo "${attrs}";
       data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
       echo "Update Done " + data.toString();
-	    
 
+      data = dh.newApplication(url, user, pw,application,appver, envs);
+      appid = data[0];
+	    
+      if (appid > 0 && compid > 0)
+      {
+       def parent_compid = 0;
+       def xpos = 100;
+       def ypos = 100;
+	  
+      data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+     }    
   }
  }    
 }
