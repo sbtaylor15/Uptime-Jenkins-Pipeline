@@ -22,7 +22,9 @@ node {
     }
     
     stage ('Testing') {
-   
+ 
+	    echo "User=" + user
+	    echo "PW=" + pw
  def comp="GLOBAL.Test_Project.Test.testapp"
  def application="GLOBAL.Test_Project.Test.My Test App"	 
  def appver = "5.0"	    
