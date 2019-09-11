@@ -10,8 +10,8 @@ def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url="http://voltron:7171"
-def user=$DEPLOYHUB_CREDS_USR
-def pw=$DEPLOYHUB_CREDS_PSW
+def user=env.DEPLOYHUB_CREDS_USR
+def pw=env.DEPLOYHUB_CREDS_PSW
 
 def dh = new deployhub();
 
