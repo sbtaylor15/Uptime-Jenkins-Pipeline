@@ -7,7 +7,7 @@ withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVari
  def app="ChiliUptimeApp"
  def environment=""
  def cmd=""
- def url="http://192.168.3.118:8181"
+ def url="http://voltron:7171"
 
  def dh = new deployhub();
 
