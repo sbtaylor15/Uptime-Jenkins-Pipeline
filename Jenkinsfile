@@ -7,22 +7,22 @@ def app="ChiliUptimeApp"
 def environment=""
 def cmd=""
 def url="http://192.168.3.118:8181"
-def user=""
-def pw=""
 
 def dh = new deployhub();
 
 node {
   withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVariable: 'pw', usernameVariable: 'user')]) 
   {
+      echo "User=" + user
+      echo "PW=" + pw
+	  
     stage('Clone sources') {
         git url: 'https://github.com/DeployHubProject/Uptime-Jenkins-Pipeline.git'
     }
     
     stage ('Testing') {
  
-      echo "User=" + user
-      echo "PW=" + pw
+
       def comp="GLOBAL.Test_Project.Test.testapp"
       def application="GLOBAL.Test_Project.Test.My Test App"	 
       def appver = "5.0"	    
