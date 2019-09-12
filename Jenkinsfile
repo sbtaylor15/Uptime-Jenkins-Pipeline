@@ -7,7 +7,7 @@
  def environment=""
  def cmd=""
  def url="http://voltron:7171"
- def user=""
+ def user="@deployhub-cred"
  def pw=""
  def dh = new deployhub();
 
