@@ -2,8 +2,7 @@
 
 @Library('deployhub') _
 
-withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVariable: 'pw', usernameVariable: 'user')]) 
-{  	
+
  def app="ChiliUptimeApp"
  def environment=""
  def cmd=""
@@ -66,5 +65,4 @@ withCredentials([usernamePassword(credentialsId: 'deployhub-creds', passwordVari
       data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
      }    
   }
- }    
 }
