@@ -7,8 +7,8 @@
  def environment=""
  def cmd=""
  def url="http://voltron:7171"
- def user="admin"
- def pw="admin"
+ def user="@deployhub-creds"
+ def pw=""
  def dh = new deployhub();
 
  node {
