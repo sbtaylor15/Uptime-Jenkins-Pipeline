@@ -43,6 +43,7 @@
       def attrs = [
 	     buildnumber: env.BUILD_ID,
 	     buildjob: "GLOBAL.test-project",
+	     ComponentType: "Application File",
 	     Category: "Deploy",
 	     AlwaysDeploy: "N"
 	    ];
