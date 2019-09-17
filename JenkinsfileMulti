@@ -6,7 +6,7 @@
  def app="ChiliUptimeApp"
  def environment=""
  def cmd=""
- def url="http://192.168.3.118:9292"
+ def url="http://192.168.3.118:8181"
  def user=""
  def pw=""
  def dh = new deployhub();
@@ -30,7 +30,7 @@
       echo "${version}";
 
       def component_items = [
-       [re: 'GLOBAL.openmake', uri: '/jobs', pattern: 'file11.txt'],
+       [re: 'GLOBAL.Global_Repo', uri: '/jobs', pattern: 'file11.txt'],
        [re: 'GLOBAL.USTR-NEXUS-1', uri: '/nexus', pattern: 'file12.jar']
       ];
        echo "${component_items}";
