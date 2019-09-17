@@ -1,71 +1,69 @@
 #!/usr/bin/env groovy
 
-def app=""
-def env=""
-def cmd=""
+@Library('deployhub') _
 
 
-node {
-    
+ def app="ChiliUptimeApp"
+ def environment=""
+ def cmd=""
+ def url="http://192.168.3.118:9292"
+ def user=""
+ def pw=""
+ def dh = new deployhub();
+
+ node {
     stage('Clone sources') {
-        git url: 'https://github.com/OpenMake-Software/Uptime-Continuous-Deployment-Pipeline.git'
+        git url: 'https://github.com/DeployHubProject/Uptime-Jenkins-Pipeline.git'
     }
-    
-    stage ('Integration') {
-      def lines=readFile('Deployfile').trim().split("\n");
-      app=lines[1].split(':')[1].trim()
-      env=lines[2].split(':')[1].trim()      
-      
-      echo "**********************************************************************************"    
-      echo "* Moving $app from Integration to Testing from Development"
-      echo "**********************************************************************************"
-      cmd = /dhmove.py --app ${app} --from_domain 'GLOBAL.My Pipeline.Development' --task 'Move to Integration'/
-      sh cmd
-      
-      echo "**********************************************************************************"    
-      echo "* Deploying $app to Integration"
-      echo "**********************************************************************************"
-      cmd = /dhdeploy.py --app ${app} --env 'Uptime Integration'/
-      sh cmd
-      
-      echo "**********************************************************************************"
-      echo "* Running Testcases for $app in Integration"
-      echo "**********************************************************************************"
-      cmd = /runtestcases.py --app ${app} --env Integration/
-      sh cmd
-    }  
     
     stage ('Testing') {
-      echo "**********************************************************************************"    
-      echo "* Moving $app from Integration to Testing"
-      echo "**********************************************************************************"
-      cmd = /dhmove.py --app ${app} --from_domain 'GLOBAL.My Pipeline.Integration' --task 'Move to Testing'/
-      sh cmd        
-        
-      echo "**********************************************************************************"        
-      echo "* Deploying $app to Testing"
-      echo "**********************************************************************************"
-      cmd = /dhdeploy.py --app ${app} --env 'Uptime Testing'/
-      sh cmd
+ 
 
-      echo "**********************************************************************************"    
-      echo "* Running Testcases for $app in Testing"
-      echo "**********************************************************************************"    
-      cmd = /runtestcases.py --app ${app} --env Testing/
-      sh cmd
-    }
-    
-    stage ('Production') {
-      echo "**********************************************************************************"    
-      echo "* Moving $app from Testing to Production"
-      echo "**********************************************************************************"    
-      cmd = /dhmove.py --app ${app} --from_domain 'GLOBAL.My Pipeline.Testing' --task 'Move to Production'/
-      sh cmd     
+      def comp="GLOBAL.Test_Project.Test.testapp"
+      def application="GLOBAL.Test_Project.Test.My Test App"	 
+      def appver = "5.0.5"	    
+      def version = "0.1.0-109"
+      def imagename = "app-ui-helm"
+      def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
 
-      echo "**********************************************************************************"        
-      echo "* Deploying $app to Production"
-      echo "**********************************************************************************"
-      cmd = /dhdeploy.py --app ${app} --env 'Uptime Production'/
-      sh cmd  
-    }
+      echo "${url}";
+      echo "${version}";
+
+      // create component version
+      compid = dh.newComponentVersion(url, user, pw, comp, "", version);
+      echo "Creation Done " + compid.toString();
+
+      // update attrs
+      def attrs = [
+	     buildnumber: env.BUILD_ID,
+	     buildjob: "GLOBAL.test-project",
+	     ComponentType: "Helm Chart",
+	     Category: "Deploy",
+	     AlwaysDeploy: "Y",
+	     DeploySequentially: "Y",
+	     CustomAction: "GLOBAL.HelmUpgradeAction",
+	     'creds["helmrepo"]': "ec2user",
+	     Chart: "stable/heartbeat",
+	     ChartVersion: "1.0.0",
+	     ChartNamespace: "dev1",
+	     'image.tag': "1.0.0"
+	    ];
+	    
+      echo "${attrs}";
+      data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
+      echo "Update Done " + data.toString();
+
+      data = dh.newApplication(url, user, pw,application,appver, envs);
+      echo "New Application " + data.toString();
+      appid = data[0];
+
+      if (appid > 0 && compid > 0)
+      {
+       def parent_compid = 0;
+       def xpos = 100;
+       def ypos = 100;
+	  
+      data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+     }    
+  }
 }
