@@ -30,8 +30,8 @@
       echo "${version}";
 
       def component_items = [
-       [name: 'file 1', repo: 'GLOBAL.Global_Repo', uri: '/jobs', pattern: 'file11.txt'],
-       [name: 'file 2', repo: 'GLOBAL.USTR-NEXUS-1', uri: '/nexus', pattern: 'file12.jar']
+       [name: 'file 1', targetdir: "mydir", repo: 'GLOBAL.Global_Repo', uri: '/jobs', pattern: 'file11.txt'],
+       [name: 'file 2', targetdir: "mydir", repo: 'GLOBAL.USTR-NEXUS-1', uri: '/nexus', pattern: 'file12.jar']
       ];
        echo "${component_items}";
 	    
