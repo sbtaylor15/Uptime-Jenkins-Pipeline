@@ -7,8 +7,8 @@
  def environment=""
  def cmd=""
  def url="http://192.168.3.118:8181"
- def user=""
- def pw=""
+ def user="admin"
+ def pw="admin"
  def dh = new deployhub();
 
  node {
