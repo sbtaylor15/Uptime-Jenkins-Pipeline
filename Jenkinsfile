@@ -19,12 +19,12 @@
     stage ('Testing') {
  
 
-      def comp="GLOBAL.Test_Project.Test.testapp"
-      def application="GLOBAL.Test_Project.Test.My Test App"	 
+      def comp="GLOBAL.ABC.DEVOPS.My Pipeline.Development.testapp"
+      def application="GLOBAL.ABC.DEVOPS.My Pipeline.Development.My Test App"	 
       def appver = "5.0.5"	    
       def version = "0.1.0-109"
       def imagename = "app-ui-helm"
-      def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
+      def String[] envs = ["GLOBAL.ABC.DEVOPS.My Pipeline.Development.dev"]	    
 
       echo "${url}";
       echo "${version}";
@@ -36,12 +36,10 @@
       // update attrs
       def attrs = [
 	     buildnumber: env.BUILD_ID,
-	     buildjob: "GLOBAL.test-project",
 	     ComponentType: "Helm Chart",
 	     Category: "Deploy",
 	     AlwaysDeploy: "Y",
 	     DeploySequentially: "Y",
-	     CustomAction: "GLOBAL.HelmUpgradeAction",
 	     'creds["helmrepo"]': "ec2user",
 	     Chart: "stable/heartbeat",
 	     ChartVersion: "1.0.0",
@@ -56,14 +54,8 @@
       data = dh.newApplication(url, user, pw,application,appver, envs);
       echo "New Application " + data.toString();
       appid = data[0];
-
-      if (appid > 0 && compid > 0)
-      {
-       def parent_compid = 0;
-       def xpos = 100;
-       def ypos = 100;
 	  
-      data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
+      data = dh.addCompVer2AppVer(url, user, pw, appid, compid);
      }    
   }
 }
