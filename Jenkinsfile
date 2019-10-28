@@ -55,7 +55,6 @@
       echo "New Application " + data.toString();
       appid = data[0];
 	  
-      data = dh.addCompVer2AppVer(url, user, pw, appid, compid);
-     }    
+      data = dh.addCompVer2AppVer(url, user, pw, appid, compid); 
   }
 }
