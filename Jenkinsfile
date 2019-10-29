@@ -19,7 +19,7 @@
     stage ('Testing') {
  
 
-      def comp="GLOBAL.ABC.DEVOPS.My Pipeline.Development.testapp"
+      def comp="GLOBAL.ABC.DEVOPS.My Pipeline.Development.testcomp3"
       def application="GLOBAL.ABC.DEVOPS.My Pipeline.Development.My Test App"	 
       def appver = "5.0.5"	    
       def version = "0.1.0-109"
