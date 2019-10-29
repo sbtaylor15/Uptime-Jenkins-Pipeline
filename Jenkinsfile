@@ -19,12 +19,12 @@
     stage ('Testing') {
  
 
-      def comp="GLOBAL.ABC.DEVOPS.My Pipeline.Development.testcomp3"
-      def application="GLOBAL.ABC.DEVOPS.My Pipeline.Development.My Test App"	 
-      def appver = "5.0.5"	    
+      def comp="GLOBAL.American University.CSC589.chili.Development.testcomp3"
+      def application="GLOBAL.American University.CSC589.chili.Development.ChiliUptimeApp"	 
+      def appver = "1"	    
       def version = "0.1.0-109"
       def imagename = "app-ui-helm"
-      def String[] envs = ["GLOBAL.ABC.DEVOPS.My Pipeline.Development.dev"]	    
+      def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]	    
 
       echo "${url}";
       echo "${version}";
