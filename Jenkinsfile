@@ -55,11 +55,5 @@
       data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
 
       echo "Update Done " + data.toString();
-
-      data = dh.newApplication(url, user, pw,application,appver, envs);
-      echo "New Application " + data.toString();
-      appid = data[0];
-	  
-      data = dh.addCompVer2AppVer(url, user, pw, appid, compid); 
   }
 }
