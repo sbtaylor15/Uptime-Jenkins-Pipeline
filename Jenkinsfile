@@ -52,7 +52,7 @@
       ];
 
      echo "${attrs}";
-      data = dh.updateComponentAttrs(dhurl, user, pw, comp, "", version , attrs);
+      data = dh.updateComponentAttrs(url, user, pw, comp, "", version , attrs);
 
       echo "Update Done " + data.toString();
 
