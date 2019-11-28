@@ -30,9 +30,9 @@
       echo "${comp}";
       echo "${version}";
       def component_items = [
-          [name:'f_index',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://google.com5', pattern: 'index.html'],
-          [name:'f_readme',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://read.google.com5', pattern: 'read.me'],
-          [name:'f_help',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://help.google.com5', pattern: 'help.asp'],
+          [name:'f_index',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://google.com7', pattern: 'index.html'],
+          [name:'f_readme',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://read.google.com7', pattern: 'read.me'],
+          [name:'f_help',repo: 'GLOBAL.American University.CSC589.chili.JenkinsRepo', uri: 'http://help.google.com7', pattern: 'help.asp'],
       ];
 
  
