@@ -17,11 +17,6 @@
     }
     
     stage ('Testing') {
- 
-      def d = dh.getLogs((url, user, pw, "541");
-      echo "rc=" + data[0];
-      echo data[1];		 
-			 
       def comp="GLOBAL.American University.CSC589.chili.Development.testcomp3"
       def application="GLOBAL.American University.CSC589.chili.Development.ChiliUptimeApp"	 
       def appver = "1"	    
@@ -29,6 +24,9 @@
       def imagename = "app-ui-helm"
       def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]	    
 
+      def d = dh.getLogs(url, user, pw, "541");
+      echo "Logs " + d.toString();
+				     
       echo "${url}";
       echo "${version}";
 
