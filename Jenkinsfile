@@ -24,7 +24,7 @@
       def imagename = "app-ui-helm"
       def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]	    
 
-      def d = dh.getLogs(url, user, pw, "541");
+      def d = dh.getLogs(url, user, pw, "628");
       echo "Logs " + d.toString();
 				     
       echo "${url}";
