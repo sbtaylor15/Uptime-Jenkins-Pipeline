@@ -30,7 +30,6 @@
       echo "${comp}";
       echo "${version}";
 
-      dh.setConfig(false);
       // create component version
       compid = dh.newComponentVersion(url, user, pw, comp, "", version);
       echo "Creation Done " + compid.toString();
