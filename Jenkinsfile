@@ -27,6 +27,7 @@
       def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]	    
 
       echo "${url}";
+      echo "${comp}";
       echo "${version}";
 
       // create component version
