@@ -17,6 +17,8 @@
     }
     
     stage ('Testing') {
+ 
+
       def comp="GLOBAL.American University.CSC589.chili.Development.testcomp3"
       def application="GLOBAL.American University.CSC589.chili.Development.ChiliUptimeApp"	 
       def appver = "1"	    
