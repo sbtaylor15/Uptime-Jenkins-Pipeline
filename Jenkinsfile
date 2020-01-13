@@ -25,7 +25,7 @@
       def version = "0.1.0-109"
       def imagename = "app-ui-helm"
       def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]
-      def endpoint = "GLOBAL.American University.CSC589.chili.Development.voltron"
+      def endpoint = "GLOBAL.American University.CSC589.chili.voltron"
 
       echo "${url}";
       echo "${comp}";
