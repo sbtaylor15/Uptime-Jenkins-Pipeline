@@ -57,5 +57,19 @@
       appid = data[0];
 	  
       data = dh.addCompVer2AppVer(url, user, pw, appid, compid); 
+	    
+      attrs = [
+	     appvar: "1234"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateApplicationAttrs(url, user, pw, application, appver , attrs);
+      echo "App Attr Update Done " + data.toString();    
+
+      attrs = [
+	     envvar: "XXYY"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateEnvironmentAttrs(url, user, pw, envs[0], attrs);
+      echo "Env Attr Update Done " + data.toString();    
   }
 }
