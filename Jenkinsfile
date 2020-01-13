@@ -24,7 +24,8 @@
       def appver = "1"	    
       def version = "0.1.0-109"
       def imagename = "app-ui-helm"
-      def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]	    
+      def String[] envs = ["GLOBAL.American University.CSC589.chili.Development.Dev"]
+      def endpoint = "GLOBAL.American University.CSC589.chili.Development.Dev.voltron"
 
       echo "${url}";
       echo "${comp}";
@@ -70,6 +71,13 @@
 	    ];	    
       echo "${attrs}";
       data = dh.updateEnvironmentAttrs(url, user, pw, envs[0], attrs);
-      echo "Env Attr Update Done " + data.toString();    
+      echo "Env Attr Update Done " + data.toString();   
+	    
+      attrs = [
+	     epvar: "WWW"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateEndpointAttrs(url, user, pw, endpoint, attrs);
+      echo "Endpoint Attr Update Done " + data.toString();  	    
   }
 }
