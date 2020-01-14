@@ -81,7 +81,7 @@
 	     epvar: "WWW"
 	    ];	    
       echo "${attrs}";
-      data = dh.updateEndpointAttrs(url, user, pw, endpoint, attrs);
+      data = dh.updateEndpointAttrs(url, user, pw, "GLOBAL.win10", attrs);
       echo "Endpoint Attr Update Done " + data.toString();     
   }
 }
