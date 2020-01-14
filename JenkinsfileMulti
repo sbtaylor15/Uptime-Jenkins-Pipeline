@@ -75,6 +75,7 @@
 	    ];	    
       echo "${attrs}";
       data = dh.updateEnvironmentAttrs(url, user, pw, envs[0], attrs);
+      data = dh.updateEnvironmentAttrs(url, user, pw, envs[1], attrs);
       echo "Env Attr Update Done " + data.toString();   
 	    
       attrs = [
