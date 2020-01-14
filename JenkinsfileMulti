@@ -42,10 +42,15 @@
       // update attrs
       def attrs = [
 	     buildnumber: env.BUILD_ID,
-	     buildjob: "GLOBAL.test-project",
-	     ComponentType: "Application File",
+	     ComponentType: "Helm Chart",
 	     Category: "Deploy",
-	     AlwaysDeploy: "N"
+	     AlwaysDeploy: "Y",
+	     DeploySequentially: "Y",
+	     'creds["helmrepo"]': "ec2user",
+	     Chart: "stable/heartbeat",
+	     ChartVersion: "1.0.0",
+	     ChartNamespace: "dev1",
+	     'image.tag': "1.0.0"
 	    ];
 	    
       echo "${attrs}";
@@ -55,14 +60,28 @@
       data = dh.newApplication(url, user, pw,application,appver, envs);
       echo "New Application " + data.toString();
       appid = data[0];
-
-      if (appid > 0 && compid > 0)
-      {
-       def parent_compid = 0;
-       def xpos = 100;
-       def ypos = 100;
 	  
-      data = dh.assignComp2App(url, user, pw, appid, compid, parent_compid, xpos, ypos);
-     }    
+      data = dh.addCompVer2AppVer(url, user, pw, appid, compid); 
+	    
+      attrs = [
+	     appvar: "1234"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateApplicationAttrs(url, user, pw, application, appver , attrs);
+      echo "App Attr Update Done " + data.toString();    
+
+      attrs = [
+	     envvar: "XXYY"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateEnvironmentAttrs(url, user, pw, envs[0], attrs);
+      echo "Env Attr Update Done " + data.toString();   
+	    
+      attrs = [
+	     epvar: "WWW"
+	    ];	    
+      echo "${attrs}";
+      data = dh.updateEndpointAttrs(url, user, pw, endpoint, attrs);
+      echo "Endpoint Attr Update Done " + data.toString();     
   }
 }
