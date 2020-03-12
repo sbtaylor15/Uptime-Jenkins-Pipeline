@@ -19,7 +19,7 @@
     stage ('Testing') {
  
 
-      def comp="GLOBAL.American University.CSC589.chili.Development.testcomp3"
+      def comp="GLOBAL.American University.CSC589.chili.Development.testcomp4"
       def application="GLOBAL.American University.CSC589.chili.Development.ChiliUptimeApp"	 
       def appver = "1"	    
       def version = "0.1.0-109"
