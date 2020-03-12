@@ -42,14 +42,14 @@
       // update attrs
       def attrs = [
 	     buildnumber: env.BUILD_ID,
-	     ComponentType: "Helm Chart",
+	     ComponentType: "Application File",
 	     Category: "Deploy",
 	     AlwaysDeploy: "Y",
 	     DeploySequentially: "Y",
 	     'creds["helmrepo"]': "ec2user",
 	     Chart: "stable/heartbeat",
 	     ChartVersion: "1.0.0",
-	     ChartNamespace: "dev1",
+	     ChartNamespace: "dev1XXX",
 	     'image.tag': "1.0.0"
 	    ];
 	    
