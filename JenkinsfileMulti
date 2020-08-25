@@ -21,7 +21,7 @@
 
       def comp="GLOBAL.Test_Project.Test.testmulti"
       def application="GLOBAL.Test_Project.Test.My Test App"	 
-      def appver = "5.0.5"	    
+      def appver = ""	    
       def version = "10.4.2-109"
       def imagename = "app-ui-helm"
       def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
