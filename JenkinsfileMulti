@@ -65,8 +65,8 @@
 	    
       attrs = [
 	     appvar: "1234",
-	     SuccessTemplate: "GLOBAL.Online Store Company.test.DeploySuccess",
-	     FailureTemplate: "GLOBAL.Online Store Company.test.DeployFailure"
+	     SuccessTemplate: "DeploySuccess",
+	     FailureTemplate: "DeployFailure"
 	    ];	    
       echo "${attrs}";
       data = dh.updateApplicationAttrs(url, user, pw, application, appver , attrs);
