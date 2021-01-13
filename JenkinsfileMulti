@@ -6,9 +6,9 @@
  def app="ChiliUptimeApp"
  def environment=""
  def cmd=""
- def url="http://voltron:7171"
- def user="admin"
- def pw="admin"
+ def url="http://192.168.3.116:8181"
+ def user="stella99"
+ def pw="123456"
  def dh = new deployhub();
 
  node {
@@ -19,12 +19,12 @@
     stage ('Testing') {
  
 
-      def comp="GLOBAL.Test_Project.Test.testmulti"
-      def application="GLOBAL.Test_Project.Test.My Test App"	 
+      def comp="GLOBAL.Online Store Company.Hipster Store.Prod.testcomp"
+      def application="GLOBAL.Online Store Company.Hipster Store.Prod.My Test App"	 
       def appver = ""	    
       def version = "10.4.2-109"
       def imagename = "app-ui-helm"
-      def String[] envs = [ "GLOBAL.Test_Project.Test.dev", "GLOBAL.Test_Project.Test.Test"]	    
+      def String[] envs = [ "GLOBAL.Online Store Company.Hipster Store.qa3-windows", "GLOBAL.Online Store Company.Hipster Store.qa4-linux"]	    
 
       echo "${url}";
       echo "${version}";
