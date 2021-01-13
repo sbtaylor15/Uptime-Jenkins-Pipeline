@@ -64,7 +64,9 @@
       data = dh.addCompVer2AppVer(url, user, pw, appid, compid); 
 	    
       attrs = [
-	     appvar: "1234"
+	     appvar: "1234",
+	     SuccessTemplate: "GLOBAL.Online Store Company.test.DeploySuccess",
+	     FailureTemplate: "GLOBAL.Online Store Company.test.DeployFailure"
 	    ];	    
       echo "${attrs}";
       data = dh.updateApplicationAttrs(url, user, pw, application, appver , attrs);
