@@ -28,6 +28,12 @@ node {
         checkout scm
     }
     
+    stage('compupdate') {
+                rc = command "env"
+                if (rc != 0) {
+                    error 'Salesforce install scratch org display failed.'
+                }
+            }
 }
 
 def command(script) {
