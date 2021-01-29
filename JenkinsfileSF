@@ -1,6 +1,4 @@
-#!groovy
-
-import groovy.json.JsonSlurperClassic
+#!/usr/bin/env groovy
 
 node {
 
@@ -16,13 +14,11 @@ node {
     def COMPONENT_GITURL='${GIT_URL}'
     def COMPONENT_VARIANT='${GIT_BRANCH}'
     def COMPONENT_VERSION='9.0.0'
-    def SHORT_SHA=sh(returnStdout: true, script: 'echo ${GIT_COMMIT} | cut -c1-7').trim()
     def COMPONENT_VERSION_COMMIT='v${COMPONENT_VERSION}.${env.BUILD_NUM})-g${SHORT_SHA}'
     def COMPONENT_DOCKERREPO='quay.io/ortelius/ortelius'
     def COMPONENT_CUSTOMACTION='GLOBAL.HelmChart'
     def COMPONENT_CHARTNAME='chart/ortelius-console'
     def DEPLOY_ENV='GLOBAL.ortelius.saas.aks-cluster'
-    def BLDDATE=sh(returnStdout: true, script: 'date').trim()
 
     def toolbelt = tool 'toolbelt'
 
