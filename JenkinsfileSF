@@ -1,0 +1,41 @@
+node {
+
+    def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
+    def SF_USERNAME=env.SF_USERNAME
+    def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
+    def TEST_LEVEL='RunLocalTests'
+    def PACKAGE_NAME='0Ho1U000000CaUzSAK'
+    def PACKAGE_VERSION
+    def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
+    def COMPONENT_APPLICATION='GLOBAL.ortelius.saas.ortelius'
+    def COMPONENT_NAME='GLOBAL.ortelius.saas.webadmin_engine'
+    def COMPONENT_GITURL='${GIT_URL}'
+    def COMPONENT_VARIANT='${GIT_BRANCH}'
+    def COMPONENT_VERSION='9.0.0'
+    def SHORT_SHA=sh(returnStdout: true, script: 'echo ${GIT_COMMIT} | cut -c1-7').trim()
+    def COMPONENT_VERSION_COMMIT='v${COMPONENT_VERSION}.${env.BUILD_NUM})-g${SHORT_SHA}'
+    def COMPONENT_DOCKERREPO='quay.io/ortelius/ortelius'
+    def COMPONENT_CUSTOMACTION='GLOBAL.HelmChart'
+    def COMPONENT_CHARTNAME='chart/ortelius-console'
+    def DEPLOY_ENV='GLOBAL.ortelius.saas.aks-cluster'
+    def BLDDATE=sh(returnStdout: true, script: 'date').trim()
+
+    def toolbelt = tool 'toolbelt'
+
+
+    // -------------------------------------------------------------------------
+    // Check out code from source control.
+    // -------------------------------------------------------------------------
+
+    stage('checkout source') {
+        checkout scm
+    }
+    
+    stage('compupdate') {
+         rc = command "echo dh updatecomp --dhurl https://console.deployhub.com --appname '${COMPONENT_APPLICATION}' --compname '${COMPONENT_NAME}' --compvariant '${COMPONENT_VARIANT}' --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr 'GitCommit:${SHORT_SHA}' --compattr 'GitUrl:${COMPONENT_GITURL}' --compattr 'GitBranch:${GIT_BRANCH}" --compattr 'BuildId:${env.BUILD_NUM}' --compattr 'BuildUrl:${env.BUILD_RUL}"'
+
+         if (rc != 0) {
+           error 'Salesforce package install scratch org creation failed.'
+         }
+    }
+}    
