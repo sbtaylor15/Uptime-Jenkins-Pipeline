@@ -20,9 +20,6 @@ node {
     def COMPONENT_CHARTNAME='chart/ortelius-console'
     def DEPLOY_ENV='GLOBAL.ortelius.saas.aks-cluster'
 
-    def toolbelt = tool 'toolbelt'
-
-
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
