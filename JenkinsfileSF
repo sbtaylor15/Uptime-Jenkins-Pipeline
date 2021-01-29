@@ -33,6 +33,7 @@ node {
     }
     
     stage('compupdate') {
+        echo $GIT_URL
         rc = command "echo dh updatecomp --dhurl https://console.deployhub.com --appname '${COMPONENT_APPLICATION}' --compname '${COMPONENT_NAME}' --compvariant '${COMPONENT_VARIANT}' --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr 'GitCommit:${SHORT_SHA}' --compattr 'GitUrl:${COMPONENT_GITURL}' --compattr 'GitBranch:${GIT_BRANCH}' --compattr 'BuildId:${env.BUILD_NUM}' --compattr 'BuildUrl:${env.BUILD_RUL}'"
         if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
