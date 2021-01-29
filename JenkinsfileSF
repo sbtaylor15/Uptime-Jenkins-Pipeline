@@ -27,6 +27,9 @@ node {
 
     stage('checkout source') {
         checkout scm
+        GIT_BRANCH=sh(returnStdout: true, script: 'git status | grep On | cut -f3 -d" "').trim()
+        GIT_URL=sh(returnStdout: true, script: 'git config --get remote.origin.url').trim()
+        GIT_COMMIT=sh(returnStdout: true, script: 'git log -1 --oneline | cut -f1 -d" "').trim()
     }
     
     stage('compupdate') {
