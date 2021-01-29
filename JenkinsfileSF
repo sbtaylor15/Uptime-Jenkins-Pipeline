@@ -29,7 +29,7 @@ node {
     }
     
     stage('compupdate') {
-                rc = command "env"
+                rc = command "env | sort"
                 if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
                 }
