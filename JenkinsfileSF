@@ -19,7 +19,7 @@ node {
     }
     
     stage('compupdate') {
-        def GIT_BRANCH=sh(returnStdout: true, script: 'git status | grep On | cut -f3 -d" "').trim()
+        def GIT_BRANCH=sh(returnStdout: true, script: 'git ls-remote --heads origin | grep $(git rev-parse HEAD) | cut -d / -f 3').trim()
         def GIT_URL=sh(returnStdout: true, script: 'git config --get remote.origin.url').trim()
         def GIT_COMMIT=sh(returnStdout: true, script: 'git log -1 --oneline | cut -f1 -d" "').trim()  
         def COMPONENT_APPLICATION='GLOBAL.ortelius.saas.ortelius'
@@ -28,9 +28,9 @@ node {
         def COMPONENT_VARIANT='${GIT_BRANCH}'
         def COMPONENT_VERSION='9.0.0'
         def COMPONENT_VERSION_COMMIT='v${COMPONENT_VERSION}.${env.BUILD_NUMBER}-g${GIT_COMMIT}'
-        command "git status"
-        command "git config --get remote.origin.url"
-        command "git log -1 --oneline"
+        eccho ${GIT_BRANCH}
+        echo ${GIT_URL}
+        echo ${COMPONENT_VERSION_COMMIT}
         rc = command "echo dh updatecomp --dhurl https://console.deployhub.com --appname ${COMPONENT_APPLICATION} --compname ${COMPONENT_NAME} --compvariant ${COMPONENT_VARIANT} --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr GitCommit:${GIT_COMMIT} --compattr GitUrl:${COMPONENT_GITURL} --compattr GitBranch:${GIT_BRANCH} --compattr BuildId:${env.BUILD_NUMBER} --compattr BuildUrl:${env.BUILD_URL}"
         if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
