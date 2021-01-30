@@ -28,17 +28,24 @@ node {
         def COMPONENT_VERSION='9.0.0'
         def COMPONENT_VERSION_COMMIT="v${COMPONENT_VERSION}.${env.BUILD_NUMBER}-g${GIT_COMMIT}"
 
-        rc = command "echo dh updatecomp --dhurl https://console.deployhub.com --appname ${COMPONENT_APPLICATION} --compname ${COMPONENT_NAME} --compvariant ${COMPONENT_VARIANT} --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr GitCommit:${GIT_COMMIT} --compattr GitUrl:${GIT_URL} --compattr GitBranch:${GIT_BRANCH} --compattr BuildId:${env.BUILD_NUMBER} --compattr BuildUrl:${env.BUILD_URL}"
+        rc = command_rc "echo dh updatecomp --dhurl https://console.deployhub.com --appname ${COMPONENT_APPLICATION} --compname ${COMPONENT_NAME} --compvariant ${COMPONENT_VARIANT} --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr GitCommit:${GIT_COMMIT} --compattr GitUrl:${GIT_URL} --compattr GitBranch:${GIT_BRANCH} --compattr BuildId:${env.BUILD_NUMBER} --compattr BuildUrl:${env.BUILD_URL}"
         if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
                 }
             }
 }
 
-def command(script) {
+def command_rc(script) {
     if (isUnix()) {
         return sh(returnStatus: true, script: '#!/bin/sh -e\n' + script);
     } else {
         return bat(returnStatus: true, script: '#!/bin/sh -e\n' + script);
     }
 }
+
+def command(script) {
+    if (isUnix()) {
+        return sh(returnStdout: true, script: '#!/bin/sh -e\n' + script);
+    } else {
+        return bat(returnStdout: true, script: '#!/bin/sh -e\n' + script);
+    }
