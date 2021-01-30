@@ -49,3 +49,4 @@ def command(script) {
     } else {
         return bat(returnStdout: true, script: '#!/bin/sh -e\n' + script);
     }
+}
