@@ -29,8 +29,7 @@ node {
         def COMPONENT_VERSION='9.0.0'
         def COMPONENT_VERSION_COMMIT='v${COMPONENT_VERSION}.${env.BUILD_NUMBER}-g${GIT_COMMIT}'
         eccho ${GIT_BRANCH}
-        echo ${GIT_URL}
-        echo ${COMPONENT_VERSION_COMMIT}
+        echo ${GIT_URL}s
         rc = command "echo dh updatecomp --dhurl https://console.deployhub.com --appname ${COMPONENT_APPLICATION} --compname ${COMPONENT_NAME} --compvariant ${COMPONENT_VARIANT} --compversion '${COMPONENT_VERSION_COMMIT}' --appautoinc --compautoinc --compattr GitCommit:${GIT_COMMIT} --compattr GitUrl:${COMPONENT_GITURL} --compattr GitBranch:${GIT_BRANCH} --compattr BuildId:${env.BUILD_NUMBER} --compattr BuildUrl:${env.BUILD_URL}"
         if (rc != 0) {
                     error 'Salesforce install scratch org display failed.'
