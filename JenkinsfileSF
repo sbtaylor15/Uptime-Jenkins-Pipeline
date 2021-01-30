@@ -19,7 +19,7 @@ node {
     }
     
     stage('compupdate') {
-        def GIT_BRANCH=sh(returnStdout: true, script: 'git ls-remote --heads origin | grep $(git rev-parse HEAD) | cut -d / -f 3' 2>/dev/null).trim()
+        def GIT_BRANCH=sh(returnStdout: true, script: 'git ls-remote --heads origin | grep $(git rev-parse HEAD) | cut -d / -f 3 2>/dev/null').trim()
         def GIT_URL=sh(returnStdout: true, script: 'git config --get remote.origin.url').trim()
         def GIT_COMMIT=sh(returnStdout: true, script: 'git log -1 --oneline | cut -f1 -d" "').trim()  
         def COMPONENT_APPLICATION='GLOBAL.ortelius.saas.ortelius'
