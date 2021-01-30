@@ -24,7 +24,7 @@ node {
         def GIT_COMMIT=sh(returnStdout: true, script: 'git log -1 --oneline | cut -f1 -d" "').trim()  
         def COMPONENT_APPLICATION='GLOBAL.ortelius.saas.ortelius'
         def COMPONENT_NAME='GLOBAL.ortelius.saas.webadmin_engine'
-        def COMPONENT_VARIANT=${GIT_BRANCH}
+        def COMPONENT_VARIANT="${GIT_BRANCH}"
         def COMPONENT_VERSION='9.0.0'
         def COMPONENT_VERSION_COMMIT="v${COMPONENT_VERSION}.${env.BUILD_NUMBER}-g${GIT_COMMIT}"
 
