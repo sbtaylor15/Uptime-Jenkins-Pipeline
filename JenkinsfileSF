@@ -19,9 +19,9 @@ node {
     }
     
     stage('compupdate') {
-        def GIT_BRANCH=sh(returnStdout: true, script: '#!/bin/sh -e\n' + 'git ls-remote --heads origin | grep $(git rev-parse HEAD) | cut -d / -f 3').trim()
-        def GIT_URL=sh(returnStdout: true, script: '#!/bin/sh -e\n' + 'git config --get remote.origin.url').trim()
-        def GIT_COMMIT=sh(returnStdout: true, script: '#!/bin/sh -e\n' + 'git log -1 --oneline | cut -f1 -d" "').trim()  
+        def GIT_BRANCH=command('git ls-remote --heads origin | grep $(git rev-parse HEAD) | cut -d / -f 3').trim()
+        def GIT_URL=command('git config --get remote.origin.url').trim()
+        def GIT_COMMIT=command('git log -1 --oneline | cut -f1 -d" "').trim()  
         def COMPONENT_APPLICATION='GLOBAL.ortelius.saas.ortelius'
         def COMPONENT_NAME='GLOBAL.ortelius.saas.webadmin_engine'
         def COMPONENT_VARIANT="${GIT_BRANCH}"
@@ -37,8 +37,8 @@ node {
 
 def command(script) {
     if (isUnix()) {
-        return sh(returnStatus: true, script: script);
+        return sh(returnStatus: true, script: '#!/bin/sh -e\n' + script);
     } else {
-        return bat(returnStatus: true, script: script);
+        return bat(returnStatus: true, script: '#!/bin/sh -e\n' + script);
     }
 }
