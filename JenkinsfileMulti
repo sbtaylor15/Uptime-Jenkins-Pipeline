@@ -6,7 +6,7 @@
  def app="ChiliUptimeApp"
  def environment=""
  def cmd=""
- def url="http://192.168.3.117:8181"
+ def url="http://192.168.10.120:8181"
  def user="admin"
  def pw="admin"
  def dh = new deployhub();
